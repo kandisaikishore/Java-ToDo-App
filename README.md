@@ -1,26 +1,43 @@
-# 📝 Java To-Do List App
+# Java To-Do App
 
-## 📌 Overview
-This project is a *Java Swing GUI application* that allows users to manage a simple To-Do list.  
-Users can *add tasks, **view tasks, and **delete tasks* using buttons and a task list.
+A small Java task-list project for practising command-line interaction, data modelling, and basic task management.
 
-This project is part of my *Java Developer Internship (Task 6: Java GUI – ToDo App)*.
+## Features
 
----
+Documented project features should match the current implementation. Typical task-list workflows include adding tasks, viewing tasks, updating completion status, and removing tasks where supported.
 
-## 🚀 Features
-- Add tasks to the list.  
-- Delete selected tasks from the list.  
-- Scroll bar support for long lists.  
-- Simple and user-friendly GUI built using *Java Swing*.  
+## Technology
 
----
+- Java
+- Object-oriented programming and command-line interaction
 
-## 🛠 Tech Stack
-- *Java* (JDK 8+)  
-- *Swing (built-in GUI library)*  
-- IDE: IntelliJ IDEA Community Edition / Eclipse  
+## Quick start
 
----
+```bash
+git clone https://github.com/saikishore2410/Java-ToDo-App.git
+cd Java-ToDo-App
+javac *.java
+java Main
+```
 
-## 📂 Project Structure
+The commands assume Java source files use the default package and `Main` is the entry point. Adjust for the class names or package structure in this repository.
+
+## Learning goals
+
+- Practise collections and control flow
+- Separate task state from user interaction
+- Add input validation and tests
+
+## Ideas to extend
+
+- Due dates and priority
+- Persistent storage
+- Search/filtering and unit tests
+
+## Scope
+
+Review the source before assuming that task data persists between runs or that the app supports multiple users.
+
+## License
+
+No license is specified. Add a `LICENSE` file before granting reuse rights.
