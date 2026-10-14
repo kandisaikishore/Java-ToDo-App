@@ -2,16 +2,16 @@
 
 [![Java](https://img.shields.io/badge/Java-CLI-orange?logo=openjdk)](https://www.java.com/) [![Repository](https://img.shields.io/badge/GitHub-Source-181717?logo=github)](https://github.com/kandisaikishore/Java-ToDo-App) [![Last Commit](https://img.shields.io/github/last-commit/kandisaikishore/Java-ToDo-App)](https://github.com/kandisaikishore/Java-ToDo-App/commits/main)
 
-A Java task-list project designed to practise task modelling, control flow, and building a simple task-management workflow.
+A simple Java task manager implemented in `ToDoApp.java`. It is a compact project for learning task-oriented program design, command-line interaction, and basic Java application structure.
 
 ## Project focus
 
-- Represent tasks and their state
-- Work with user input and task operations
-- Practise clean methods and object-oriented design
-- Build a foundation for task filtering, validation, and persistence
+- Create and manage to-do items using the supported console workflow
+- Practise methods, control flow, and data modelling
+- Keep task actions understandable and easy to extend
+- Build a foundation for filtering, input validation, and persistence
 
-Confirm the current source for the exact operations supported and whether tasks persist after the application exits.
+Check the current source for the exact task actions and storage behaviour.
 
 ## Tech stack
 
@@ -20,29 +20,30 @@ Confirm the current source for the exact operations supported and whether tasks 
 
 ## Prerequisites
 
-Install a JDK and verify that `java` and `javac` work from the terminal.
+Install a JDK and verify that `java` and `javac` work from your terminal.
 
-## Get started
+## Run locally
 
 ```bash
 git clone https://github.com/kandisaikishore/Java-ToDo-App.git
 cd Java-ToDo-App
-javac *.java
+javac ToDoApp.java
+java ToDoApp
 ```
 
-Run the class that contains `main` (for example, `java Main` if the entry point is named `Main`). Use the project's actual class names and packages.
+If the class is in a package or the entry point is named differently, adjust the command to match the source.
 
 ## Ideas to extend
 
-- Task completion status, priority, and due dates
-- Search, sort, and filter tasks
-- Persistent storage in a file or database
-- Input validation and meaningful error messages
-- Unit tests for task lifecycle and edge cases
+- Add completion status, priorities, and due dates
+- Search, sort, or filter tasks
+- Persist tasks to a file or database
+- Improve validation and error messages
+- Add automated tests for task lifecycle edge cases
 
 ## Contributing
 
-Focused pull requests are welcome. Please explain the change and include steps to verify it.
+Focused pull requests are welcome. Explain the problem solved and include clear verification steps.
 
 ## License
 
