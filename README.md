@@ -1,28 +1,26 @@
 # Java To-Do App
 
-[![Java](https://img.shields.io/badge/Java-CLI-orange?logo=openjdk)](https://www.java.com/) [![Repository](https://img.shields.io/badge/GitHub-Source-181717?logo=github)](https://github.com/kandisaikishore/Java-ToDo-App) [![Last Commit](https://img.shields.io/github/last-commit/kandisaikishore/Java-ToDo-App)](https://github.com/kandisaikishore/Java-ToDo-App/commits/main)
+[![Java](https://img.shields.io/badge/Java-CLI-orange?logo=openjdk)](https://www.java.com/) [![Source](https://img.shields.io/badge/Source-GitHub-181717?logo=github)](https://github.com/kandisaikishore/Java-ToDo-App)
 
-A simple Java task manager implemented in `ToDoApp.java`. It is a compact project for learning task-oriented program design, command-line interaction, and basic Java application structure.
+A compact Java command-line task manager built around `ToDoApp.java`. It provides a starting point for learning how to structure task workflows, handle console input, and extend a small Java application.
 
-## Project focus
+## What this project demonstrates
 
-- Create and manage to-do items using the supported console workflow
-- Practise methods, control flow, and data modelling
-- Keep task actions understandable and easy to extend
-- Build a foundation for filtering, input validation, and persistence
+- Menu-driven task interaction in the terminal
+- Java methods and control flow
+- Basic task data handling
+- Opportunities to add priorities, due dates, filtering, and persistence
 
-Check the current source for the exact task actions and storage behaviour.
+The exact operations and data-storage behaviour depend on the current source implementation.
 
-## Tech stack
+## Technology
 
 - Java / JDK
 - Command-line interface
 
-## Prerequisites
-
-Install a JDK and verify that `java` and `javac` work from your terminal.
-
 ## Run locally
+
+Install a JDK, then run:
 
 ```bash
 git clone https://github.com/kandisaikishore/Java-ToDo-App.git
@@ -31,20 +29,23 @@ javac ToDoApp.java
 java ToDoApp
 ```
 
-If the class is in a package or the entry point is named differently, adjust the command to match the source.
+If the source uses packages or additional Java files, compile from the appropriate directory and include the related classes.
 
-## Ideas to extend
+## Suggested validation
 
-- Add completion status, priorities, and due dates
-- Search, sort, or filter tasks
-- Persist tasks to a file or database
-- Improve validation and error messages
-- Add automated tests for task lifecycle edge cases
+Try creating multiple tasks, handling invalid menu choices, and checking how tasks behave when the application is restarted. Add tests for empty inputs, duplicate tasks, and any update/delete operations.
+
+## Roadmap
+
+- Task completion status, priority, and due dates
+- Search, sorting, and filtering
+- File or database persistence
+- Automated unit tests and stronger input validation
 
 ## Contributing
 
-Focused pull requests are welcome. Explain the problem solved and include clear verification steps.
+Open an issue with reproducible steps or send a focused pull request with validation notes.
 
 ## License
 
-No license file is currently declared. Add a `LICENSE` file to define reuse terms.
+No license file is currently declared. Add a `LICENSE` file if you intend to define reuse terms.
