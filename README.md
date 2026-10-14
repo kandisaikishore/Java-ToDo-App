@@ -1,58 +1,49 @@
 # Java To-Do App
 
-## Live Demo / Deployment URL
+[![Java](https://img.shields.io/badge/Java-CLI-orange?logo=openjdk)](https://www.java.com/) [![Repository](https://img.shields.io/badge/GitHub-Source-181717?logo=github)](https://github.com/kandisaikishore/Java-ToDo-App) [![Last Commit](https://img.shields.io/github/last-commit/kandisaikishore/Java-ToDo-App)](https://github.com/kandisaikishore/Java-ToDo-App/commits/main)
 
-**Deployment URL:** Not verified yet. Add the confirmed public application URL here after checking the live service. This repository's GitHub URL is the source code, not a deployed application.
+A Java task-list project designed to practise task modelling, control flow, and building a simple task-management workflow.
 
+## Project focus
 
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?logo=github)](https://github.com/saikishore2410/Java-ToDo-App) [![Issues](https://img.shields.io/github/issues/saikishore2410/Java-ToDo-App)](https://github.com/saikishore2410/Java-ToDo-App/issues) [![Last Commit](https://img.shields.io/github/last-commit/saikishore2410/Java-ToDo-App)](https://github.com/saikishore2410/Java-ToDo-App/commits/main)
+- Represent tasks and their state
+- Work with user input and task operations
+- Practise clean methods and object-oriented design
+- Build a foundation for task filtering, validation, and persistence
 
-> A Java task-list project for practising command-line interaction, data modelling, and task management.
+Confirm the current source for the exact operations supported and whether tasks persist after the application exits.
 
-## At a glance
+## Tech stack
 
-- **Purpose:** Use the feature and scope sections below to understand the problem this project addresses.
-- **Getting started:** Follow the repository-specific setup instructions and verify commands against the current source and package scripts.
-- **Configuration:** Keep API keys, database credentials, tokens, and private user data out of commits; configure secrets locally.
-- **Quality checks:** Run the available build, test, and lint commands before submitting changes.
+- Java / JDK
+- Command-line interface
 
+## Prerequisites
 
+Install a JDK and verify that `java` and `javac` work from the terminal.
 
-A Java task-list project for practising command-line interaction, data modelling, and task management.
-
-## Overview
-
-Explore the implemented task workflows in the source code. This README avoids assuming features such as persistence or multi-user support unless those are present in the project.
-
-## Run locally
-
-Install a JDK and clone the repository:
+## Get started
 
 ```bash
-git clone https://github.com/saikishore2410/Java-ToDo-App.git
+git clone https://github.com/kandisaikishore/Java-ToDo-App.git
 cd Java-ToDo-App
 javac *.java
 ```
 
-Run the class containing `main`; replace `Main` with the actual entry-point class if different.
-
-## Learning goals
-
-- Practise control flow and collections
-- Separate task data from user interaction
-- Add input validation and meaningful error messages
-- Test task creation, updates, and deletion
+Run the class that contains `main` (for example, `java Main` if the entry point is named `Main`). Use the project's actual class names and packages.
 
 ## Ideas to extend
 
-- Due dates and priorities
-- Persistent storage
-- Search, filtering, and unit tests
+- Task completion status, priority, and due dates
+- Search, sort, and filter tasks
+- Persistent storage in a file or database
+- Input validation and meaningful error messages
+- Unit tests for task lifecycle and edge cases
 
-## Contributions
+## Contributing
 
-Focused improvements with clear test steps are welcome.
+Focused pull requests are welcome. Please explain the change and include steps to verify it.
 
 ## License
 
-No license is specified. Add a `LICENSE` file before granting reuse rights.
+No license file is currently declared. Add a `LICENSE` file to define reuse terms.
