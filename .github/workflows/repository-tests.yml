@@ -48,11 +48,15 @@ jobs:
           elif [[ -x ./gradlew ]]; then
             ./gradlew test
           elif [[ -f build.gradle || -f build.gradle.kts ]]; then
-            echo "::notice::Gradle build file found but no Gradle wrapper; install/use a wrapper for reproducible builds."
             if command -v gradle >/dev/null 2>&1; then gradle test
             else echo "::warning::Gradle tests skipped because no wrapper or system Gradle is available."; fi
+          elif find . -type f -name '*.java' -not -path './.git/*' -print -quit | grep -q .; then
+            mapfile -d '' java_sources < <(find . -type f -name '*.java' -not -path './.git/*' -not -path './build-classes/*' -print0)
+            mkdir -p build-classes
+            javac -encoding UTF-8 -d build-classes "${java_sources[@]}"
+            echo "::notice::Plain Java sources compiled; no root Maven/Gradle project is declared."
           else
-            echo "No root Maven/Gradle project detected; skipping Java tests."
+            echo "No Java project detected; skipping Java checks."
           fi
 
       - name: Run Python tests
