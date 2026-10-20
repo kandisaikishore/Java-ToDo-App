@@ -64,7 +64,7 @@ jobs:
             if [[ -x "$dir/mvnw" ]]; then
               (cd "$dir" && ./mvnw --batch-mode --no-transfer-progress clean verify)
             else
-              (cd "$dir" && mvn --batch-mode --no-transfer-progress clean verify)
+              mvn --batch-mode --no-transfer-progress -f "$file" clean verify
             fi
             echo "- Maven verify: $dir — PASS" >> reports/check-summary.txt
             count=$((count + 1))
