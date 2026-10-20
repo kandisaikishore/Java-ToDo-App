@@ -5,7 +5,7 @@ on:
   pull_request:
   workflow_dispatch:
   schedule:
-    - cron: "17 2 * * *" # Daily at 07:47 IST
+    - cron: "17 2 * * *"
 
 permissions:
   contents: read
@@ -28,6 +28,7 @@ jobs:
         with:
           distribution: temurin
           java-version: "17"
+          cache: maven
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -43,18 +44,25 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if [[ -f pom.xml ]]; then
-            mvn --batch-mode --no-transfer-progress test
+          # Build each Maven module explicitly. The nested API must not be compiled by raw javac.
+          mapfile -t pom_files < <(find . -type d \( -name .git -o -name target -o -name node_modules \) -prune -o -type f -name pom.xml -print)
+          if (( ${#pom_files[@]} > 0 )); then
+            for pom in "${pom_files[@]}"; do
+              echo "Testing Maven module: $pom"
+              mvn --batch-mode --no-transfer-progress -f "$pom" test
+            done
           elif [[ -x ./gradlew ]]; then
             ./gradlew test
           elif [[ -f build.gradle || -f build.gradle.kts ]]; then
             if command -v gradle >/dev/null 2>&1; then gradle test
-            else echo "::warning::Gradle tests skipped because no wrapper or system Gradle is available."; fi
-          elif find . -type f -name '*.java' -not -path './.git/*' -print -quit | grep -q .; then
-            mapfile -d '' java_sources < <(find . -type f -name '*.java' -not -path './.git/*' -not -path './build-classes/*' -print0)
+            else echo "::error::Gradle project found without wrapper or system Gradle"; exit 1; fi
+          elif [[ -f ToDoApp.java ]]; then
+            javac -encoding UTF-8 ToDoApp.java
+          elif find . -type f -name '*.java' -not -path './.git/*' -not -path './build-classes/*' -not -path './api/src/*' -not -path './ui/*' -print -quit | grep -q .; then
+            mapfile -d '' java_sources < <(find . -type f -name '*.java' -not -path './.git/*' -not -path './build-classes/*' -not -path './api/src/*' -not -path './ui/*' -print0)
             mkdir -p build-classes
             javac -encoding UTF-8 -d build-classes "${java_sources[@]}"
-            echo "::notice::Plain Java sources compiled; no root Maven/Gradle project is declared."
+            echo "::notice::Standalone Java sources compiled; no Maven/Gradle module detected."
           else
             echo "No Java project detected; skipping Java checks."
           fi
@@ -66,7 +74,7 @@ jobs:
           if [[ -f requirements.txt ]]; then python -m pip install --upgrade pip && pip install -r requirements.txt; fi
           if [[ -f pyproject.toml || -f setup.py || -f pytest.ini || -d tests ]] || find . -maxdepth 2 -name 'test_*.py' -print -quit | grep -q .; then
             python -m pip install pytest
-            if [[ -d tests ]] || find . -maxdepth 2 -name 'test_*.py' -print -quit | grep -q .; then pytest -q; else echo "::notice::Python project detected, but no tests directory or test_*.py files were found."; fi
+            if [[ -d tests ]] || find . -maxdepth 2 -name 'test_*.py' -print -quit | grep -q .; then pytest -q; else echo "::notice::Python project detected, but no test files were found."; fi
           else
             echo "No Python test suite detected; skipping pytest."
           fi
