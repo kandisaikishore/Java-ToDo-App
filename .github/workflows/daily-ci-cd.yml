@@ -155,15 +155,21 @@ jobs:
             count=$((count + 1))
           done < <(find . -type d \( -name .git -o -name node_modules -o -name .venv -o -name __pycache__ \) -prune -o -type f \( -name pyproject.toml -o -name requirements.txt \) -print)
 
-          # Plain Java repositories without Maven/Gradle; include nested source paths and spaces.
+          # Compile only standalone Java sources; framework sources require Maven/Gradle dependencies.
           if [[ "$count" == 0 ]] && find . -type d \( -name .git -o -name node_modules -o -name target \) -prune -o -type f -name '*.java' -print -quit | grep -q .; then
-            mapfile -d '' java_files < <(find . -type d \( -name .git -o -name node_modules -o -name target \) -prune -o -type f -name '*.java' -print0)
+            mapfile -d '' java_files < <(find . -type d \( -name .git -o -name node_modules -o -name target \) -prune -o -type f -name '*.java' -not -path './api/src/*' -not -path './ui/*' -not -path './src/main/java/*' -print0)
             mkdir -p /tmp/java-classes
             javac -d /tmp/java-classes "${java_files[@]}"
             if [[ -f TestRunner.java ]]; then
               java -cp /tmp/java-classes TestRunner
             elif [[ -f CalculatorTest.java ]]; then
               java -cp /tmp/java-classes CalculatorTest
+            elif [[ -f NotesAppTest.java ]]; then
+              java -cp /tmp/java-classes NotesAppTest
+            elif [[ -f AccountTest.java ]]; then
+              java -cp /tmp/java-classes AccountTest
+            elif [[ -f AppTest.java ]]; then
+              java -cp /tmp/java-classes AppTest
             fi
             echo "- Java compile/test-runner smoke check: PASS" >> reports/check-summary.txt
             count=$((count + 1))
