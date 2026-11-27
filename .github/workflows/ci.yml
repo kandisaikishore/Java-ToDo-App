@@ -19,7 +19,9 @@ jobs:
           java-version: '17'
           distribution: temurin
       - name: Compile standalone Java application
-        run: javac ToDoApp.java
+        run: javac ToDoApp.java TaskStorage.java TaskStorageTest.java
+      - name: Run task persistence regression tests
+        run: java TaskStorageTest
   spring-api:
     runs-on: ubuntu-latest
     defaults:
